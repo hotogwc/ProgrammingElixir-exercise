@@ -8,7 +8,8 @@ defmodule MyString do
   def anagram?(word1, word2) do
     Enum.sort(word1) == Enum.sort(word2)
   end
-  
+
+
   def calculate(expression) do
     expression
     |> Enum.reject(&(&1 == (? )))
@@ -26,12 +27,19 @@ defmodule MyString do
       "*" -> number1 * number2
       "/" -> number1 / number2
       _ -> raise "illegal operation"
-    end
-   
+    end  
   end
 
   defp parse_and_calculate(explist) do
     raise "illegal expression"
+  end
+
+  def center(wordlist) do
+    column_width = wordlist |> Enum.map(&(String.length(&1))) |> Enum.max
+
+    wordlist
+    |> Enum.map(&(String.duplicate(" ",div(column_width - String.length(&1), 2)) <> &1))
+    |> Enum.each &IO.puts/1
   end
 
 end
